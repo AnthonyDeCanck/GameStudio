@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-game',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+ 
+  private code: string;
+  private url: SafeResourceUrl;
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer, private route:ActivatedRoute) { }
 
-  ngOnInit() {
+ngOnInit() {
+  this.code = ""+ this.route.snapshot.paramMap.get('string');
+  let url = `../../assets/games/${this.code}`;
+  this.url = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
 }
