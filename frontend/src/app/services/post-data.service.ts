@@ -8,19 +8,19 @@ export class PostDataService {
   
   constructor() {
 
-    let post1 = new Post("New game: Avoiding responsibility!","GareSoft",new Date(2018,1,20,16,5,30), "Bla bla bla",[
+    let post1 = new Post("New game:Warlord heroes!","GareSoft",new Date(2018,1,20,16,5,30), "Bla bla bla", "../../assets/img/responsibility[1].jpg",[
       "../../assets/img/responsibility[1].jpg",
       "../../assets/img/Avoid_responsibility_01.png"
     ], "Warlord_heroes.swf");
-    let post2 = new Post("Platform Ninja? Hell yeah!","GareSoft",new Date(2018,1,19,14,7,30),"Bla bla bla", [
+    let post2 = new Post("Winged Bullet? Hell yeah!","GareSoft",new Date(2018,1,19,14,7,30),"Bla bla bla", "../../assets/img/responsibility[1].jpg", [
       "../../assets/img/responsibility[1].jpg",
       "../../assets/img/Avoid_responsibility_01.png"
     ], "Winged_Bullet.swf");
-    let post3 = new Post("Mines or swines?","LGRGames",new Date(2018,1,10,17,55,17), "Bla bla bla",[
+    let post3 = new Post("Adventure ho's?","LGRGames",new Date(2018,1,10,17,55,17), "Bla bla bla", "../../assets/img/responsibility[1].jpg",[
       "../../assets/img/responsibility[1].jpg",
       "../../assets/img/Avoid_responsibility_01.png"
     ], "Adventure_Ho.swf");
-    let post4 = new Post("Mines or swines?","LGRGames",new Date(2018,1,10,17,55,17), "Bla bla bla",[
+    let post4 = new Post("Stellar SQUAAAD!!","LGRGames",new Date(2018,1,10,17,55,17), "Bla bla bla","../../assets/img/responsibility[1].jpg",[
       "../../assets/img/responsibility[1].jpg",
       "../../assets/img/Avoid_responsibility_01.png"
     ], "Stellar_Squad.swf");

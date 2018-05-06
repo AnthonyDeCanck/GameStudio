@@ -11,28 +11,20 @@ export class PostComponent implements OnInit {
 
   private post:Post;
 
-  private title:string;
-  private author:string;
-  private postDate:Date;
-  private imgList:string[];
-  private body:string;
-  private gameURL:string;
-
-
   constructor(private _postDataService:PostDataService) {
     this.post = _postDataService.activePost;
-    this.title = "New game: Avoiding responsibility!";
-    this.author = "GareSoft";
-    this.postDate = new Date();
-    this.imgList = [
-      "../../assets/img/responsibility[1].jpg",
-      "../../assets/img/Avoid_responsibility_01.png"
-    ];
-    this.body = "Bla bla bla";
-    this.gameURL = "p_platform_ninja_1.0.swf";
    }
 
   ngOnInit() {
+  }
+
+  hasImg() {
+    return this.post.imgList.length != null;
+  }
+
+  hasExtraImg(){
+    return this.post.imgList.length >=1;
+
   }
 
 }
