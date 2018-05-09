@@ -1,4 +1,5 @@
 export class Post {
+  private _id:string;
   private _title:string;
   private _author:string;
   private _postDate:Date;
@@ -15,6 +16,33 @@ export class Post {
       this._imgList = imgList;
       this._body = body;
       this._gameURL = gameURL;
+    }
+
+    static fromJSON(json: any): Post {
+      const rec = new Post(
+        json.title,
+        json.author,
+        json.postDate,
+        json.titleImg,
+        json.imgList,
+        json.body,
+        json.gameURL
+      );
+      rec._id = json._id;
+      return rec;
+    }
+  
+    toJSON() {
+      return {
+        _id: this._id,
+        title: this._title,
+        author: this._author,
+        postDate: this._postDate,
+        titleImg: this._titleImg,
+        imgList: this._imgList,
+        body: this._body,
+        gameURL: this._gameURL
+      };
     }
     
     get title() : string {

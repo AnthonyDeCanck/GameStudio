@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../models/Post';
 import { PostDataService } from '../services/post-data.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-index',
@@ -9,13 +10,21 @@ import { PostDataService } from '../services/post-data.service';
 })
 export class IndexComponent implements OnInit {
 
-  private posts:Post[];
+  private _posts:Post[];
+  public errorMsg:string;
 
   constructor(private _postDataService:PostDataService) {
-    this.posts = _postDataService.posts;
   }
 
   ngOnInit() {
+    this._postDataService.posts.subscribe(
+      posts => (this._posts = posts),
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${
+          error.status
+        } while trying to retrieve posts: ${error.error}`;
+      }
+    );
   }
 
 }
