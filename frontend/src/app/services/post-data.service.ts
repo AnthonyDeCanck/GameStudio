@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../models/Post';
 import { HttpClient } from '@angular/common/http';
+import { Post } from '../models/Post';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
@@ -32,7 +32,6 @@ export class PostDataService {
   }
 
   getPost(id: string): Observable<Post> {
-    console.log("GetPost Called");
     return this.http
       .get(`${this._appUrl}/posts/${id}`)
       .pipe(map(Post.fromJSON));

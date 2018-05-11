@@ -12,8 +12,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PostComponent implements OnInit {
 
   private _post:Post
-  public hasImg:boolean = false;
-  public hasExtraImg:boolean = false;
   public errorMsg:string;
 
   constructor( private _postDataService:PostDataService, private route: ActivatedRoute) {
@@ -30,9 +28,6 @@ export class PostComponent implements OnInit {
         } while trying to retrieve post: ${error.error}`;
       }
     );
-    console.log(this._post);
-    this.hasImg = this.postHasImg();
-    this.hasExtraImg = this.postHasExtraImg();
 
   }
 
@@ -40,13 +35,5 @@ export class PostComponent implements OnInit {
     return this._post;
   }
 
-  postHasImg() {
-    return this._post.titleImg != undefined;
-  }
-
-  postHasExtraImg(){
-    return this._post.imgList != undefined;
-
-  }
 
 }

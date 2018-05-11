@@ -3,6 +3,10 @@ var router = express.Router();
 let mongoose = require('mongoose');
 let Post = mongoose.model('Post');
 
+let jwt = require('express-jwt');
+
+let auth = jwt({secret: process.env.GAMESTUDIO_BACKEND_SECRET});
+
 /* GET home page. */
 router.get('/API/posts/', function(req, res, next) {
   Post.find(function(err, posts){
@@ -15,7 +19,7 @@ router.get('/API/posts/', function(req, res, next) {
 
 router.get('/API/posts/:post', function(req, res, next) {
   res.json(req.post);
-  console.log("get request dealt with");
+
 });
 
 router.get('/API/posts/byAuthor/:author', function(req, res, next) {
@@ -30,7 +34,7 @@ router.post('/API/posts/', function (req, res, next) {
   });
 }); 
 
-router.delete('/API/posts/:post', function (req, res) {
+router.delete('/API/posts/:post', auth, function (req, res) {
   req.post.remove(function (err) {
     if (err) {
         return next(err);
