@@ -16,8 +16,4 @@ export class ListPostComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeActivePost(post :Post){
-    this._postDataService.setActivePost(post);
-  }
-
 }

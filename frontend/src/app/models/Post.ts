@@ -12,20 +12,21 @@ export class Post {
       this._title = title;
       this._author = author;
       this._postDate = postDate;
+      this._body = body;
       this._titleImg = titleImg;
       this._imgList = imgList;
-      this._body = body;
       this._gameURL = gameURL;
     }
 
     static fromJSON(json: any): Post {
+      console.log(json);
       const rec = new Post(
         json.title,
         json.author,
         json.postDate,
+        json.body,
         json.titleImg,
         json.imgList,
-        json.body,
         json.gameURL
       );
       rec._id = json._id;
@@ -38,9 +39,9 @@ export class Post {
         title: this._title,
         author: this._author,
         postDate: this._postDate,
+        body: this._body,
         titleImg: this._titleImg,
         imgList: this._imgList,
-        body: this._body,
         gameURL: this._gameURL
       };
     }
@@ -72,4 +73,8 @@ export class Post {
     get gameURL() : string {
       return this._gameURL;
     }	
+
+    get ID() : string {
+      return this._id;
+    }
   }

@@ -4,14 +4,12 @@
     
     <!-- Blog Entries Column -->
     <div class="col-md-8">
-      <h1 class="my-4">{{owner}}'s studio
+      <h1 class="my-4">{{_owner}}'s studio
       </h1>
 
       <!-- Blog Post -->
-    <div *ngFor="let post of posts">
-      <div *ngIf="postFromAuthor(post)">
-          <app-list-post [post]=post></app-list-post>
-      </div>
+    <div *ngFor="let post of _posts">
+          <app-list-post [post]='post' data-test="post"></app-list-post>
     </div>
 
       <!-- Pagination -->

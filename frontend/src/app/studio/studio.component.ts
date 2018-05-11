@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostDataService } from '../services/post-data.service';
 import { Post } from '../models/Post';
-import { AppRoutingModule } from '../app-routing.module';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -12,25 +12,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudioComponent implements OnInit {
   
-  private posts:Post[];
-  private owner:string;
+  private _posts:Post[];
+  private _owner:string;
+  public errorMsg:string;
 
   constructor(private _postDataService:PostDataService, private route:ActivatedRoute) {
-    this.posts = _postDataService.posts;
-    this.owner = ""+ this.route.snapshot.paramMap.get('string');
+    this._owner = ""+ this.route.snapshot.paramMap.get('string');
+    
    }
 
-  ngOnInit() {
-  }
-
-  changeActivePost(){
-    this._postDataService.setActivePost(this.posts[0]);
-  }
-
-  postFromAuthor(post:Post):boolean{
-    if (post.author == this.owner ){
-      return true;
-    } else return false;
+   ngOnInit(): void {
+    this._postDataService.getPostsByUser(this._owner).subscribe(
+      posts => (this._posts = posts),
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${
+          error.status
+        } while trying to retrieve posts: ${error.error}`;
+      }
+    );
   }
 
 }

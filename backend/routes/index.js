@@ -15,11 +15,13 @@ router.get('/API/posts/', function(req, res, next) {
 
 router.get('/API/posts/:post', function(req, res, next) {
   res.json(req.post);
+  console.log("get request dealt with");
 });
 
 router.get('/API/posts/byAuthor/:author', function(req, res, next) {
   res.json(req.author);
 });
+
 router.post('/API/posts/', function (req, res, next) {
   let post = new Post(req.body);
   post.save(function(err, rec) {

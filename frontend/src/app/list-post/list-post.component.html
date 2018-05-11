@@ -1,9 +1,9 @@
 <div class="card mb-4">
-  <img class="card-img-top" src="{{post.titleImg}}" alt="Card image cap">
+  <img class="card-img-top" src="assets/img/{{post.titleImg}}" alt="Card image cap">
   <div class="card-body">
     <h2 class="card-title">{{post.title}}</h2>
     <p class="card-text">{{post.body}}</p>
-    <a class="btn btn-primary" (click)="changeActivePost(post)" routerLink="/post">Read More &rarr;</a>
+    <a class="btn btn-primary" routerLink="/post/{{post.ID}}">Read More &rarr;</a>
   </div>
   <div class="card-footer text-muted">
     Posted on {{post.postDate}} by

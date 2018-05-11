@@ -4,7 +4,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
                 <p>
-                    <img src="../../assets/img/GameStudio_Logo_Small.png" alt="header" class="centerDiv">
+                    <img src="assets/img/GameStudio_Logo_Small.png" alt="header" class="centerDiv">
                 </p>
                 <p id="buttonP">
                     <button class="btn btn-danger">Get Started Now!</button>
@@ -25,8 +25,9 @@
             </h1>
       
             <!-- Blog Post -->
-          <div *ngFor="let post of posts">
-                <app-list-post [post]=post></app-list-post>
+          <div *ngFor="let localPost of _posts">
+                <app-list-post [post]='localPost' data-test="post"></app-list-post>
+                <p>Bla bla</p>
           </div>
       
             <!-- Pagination -->
