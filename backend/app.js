@@ -7,8 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
 
+var app = express();
 
-mongoose.connect('mongodb://localhost/GameStudioDB');
+let cors = require('cors');
+app.use(cors({origin: "*"}));
+
+
+mongoose.connect(process.env.GAMESTUDIO_DB || 'mongodb://localhost/GameStudioDB');
 
 
 require('./models/post');
@@ -19,7 +24,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
