@@ -10,7 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class IndexComponent implements OnInit {
 
-  private _posts:Post[];
+  public _posts:Post[];
   public errorMsg:string;
 
   constructor(private _postDataService:PostDataService) {

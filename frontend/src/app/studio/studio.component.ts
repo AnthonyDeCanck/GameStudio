@@ -12,8 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class StudioComponent implements OnInit {
   
-  private _posts:Post[];
-  private _owner:string;
+  public _posts:Post[];
+  public _owner:string;
   public errorMsg:string;
 
   constructor(private _postDataService:PostDataService, private route:ActivatedRoute) {
