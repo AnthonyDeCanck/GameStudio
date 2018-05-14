@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PostDataService {
-  private readonly _appUrl = '/API/'
+  private readonly _appUrl = '/API'
   
   constructor(private http: HttpClient) {
    }
