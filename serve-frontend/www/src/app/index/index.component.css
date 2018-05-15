@@ -1,0 +1,33 @@
+header{
+    background-image: url('../../assets/img/main-bg.jpg');
+    width : 100%;
+    /*filter: brightness(50%);*/
+    background-size: cover;
+    background-color: rgb(32, 8, 43);
+}
+
+.container{
+    filter: brightness(100%);
+}
+
+.site-heading{
+    margin: 100px 0px;
+    text-align: center;
+}
+
+.centerDiv {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#buttonP {
+    margin-top: 40px;
+}
+button {
+    background-color: #8B1720; 
+    border: 2px solid white;
+}
+button:hover {
+    border: 2px solid white;
+}

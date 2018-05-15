@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="row">
+    
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
+      <h1 class="my-4">{{_owner}}'s studio
+      </h1>
+
+      <!-- Blog Post -->
+    <div *ngFor="let post of _posts">
+          <app-list-post [post]='post' data-test="post"></app-list-post>
+    </div>
+
+      <!-- Pagination -->
+      
+    </div>    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+    <app-sidebar></app-sidebar>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->

@@ -1,0 +1,11 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h2 class="card-title">{{post.title}}</h2>
+    <p class="card-text">{{post.body}}</p>
+    <a class="btn btn-primary" routerLink="/post/{{post.ID}}">Read More &rarr;</a>
+  </div>
+  <div class="card-footer text-muted">
+    Posted on {{post.postDate}} by
+    <a routerLink="/studio/{{post.author}}">{{post.author}}</a>
+  </div>
+</div>

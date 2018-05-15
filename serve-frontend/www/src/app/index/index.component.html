@@ -1,0 +1,38 @@
+<header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <p>
+                    <img src="assets/img/GameStudio_Logo_Small.png" alt="header" class="centerDiv">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+        <div class="row">
+          
+          <!-- Blog Entries Column -->
+          <div class="col-md-8">
+            <h1 class="my-4">Page Heading
+            </h1>
+      
+            <!-- Blog Post -->
+          <div *ngFor="let localPost of _posts">
+                <app-list-post [post]='localPost' data-test="post"></app-list-post>
+          </div>
+      
+            
+          </div>    <!-- Sidebar Widgets Column -->
+          <div class="col-md-4">
+          <app-sidebar></app-sidebar>
+          </div>
+        </div>
+        <!-- /.row -->
+      
+      </div>
+      <!-- /.container -->
