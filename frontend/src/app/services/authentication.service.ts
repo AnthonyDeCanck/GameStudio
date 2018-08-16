@@ -63,6 +63,7 @@ export class AuthenticationService {
 
   logout() {
     if (this.user$.getValue()) {
+      console.log("user$ = "+this.user$.getValue());
       localStorage.removeItem("userName");
       localStorage.removeItem(this._tokenKey);
       setTimeout(() => this._user$.next(null));

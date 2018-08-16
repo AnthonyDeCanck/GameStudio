@@ -1,25 +1,38 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4" style="text-align: center">
-                <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
-                <form class="ui form" [formGroup]='post' (ngSubmit)='onSubmit()'>
-                  <h4 class="ui dividing header">Create post</h4>
-                  <div class="field">
-                      <label for="title">title</label>
-                      <input id="name" name="title" formControlName='title'>
-                      
-                    </div>
-                    <div class="field">
-                        <label for="body">body</label>
-                        <textarea id="body" name="body" formControlName='body'></textarea>
-                            
-                    </div>
-                    <button type='submit' class="ui positive right button">
-                        Publish Post
-                      </button>
-                </form>
+<div class="ui segment">
+    <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
+    <form class="ui form" [formGroup]='post' (ngSubmit)='onSubmit()'>
+      <h4 class="ui dividing header">Add Post</h4>
+      <div class="field">
+          <label for="title">title</label>
+          <input id="name" name="title" formControlName='title'>
+          
         </div>
-    </div>
-    
+        <div class="field">
+            <label for="body">body</label>
+            <textarea id="body" name="body" formControlName='body'></textarea>
+                
+        </div>
+        <div class="field">
+            <label for="gameFile">Add GameFile (optional / SWF only!)</label>
+            <input id="gameFile" name="gameFile"  type="file" (change)="handleGameInput($event.target.files)">
+        </div>
+        <div class="field">
+            <label for="tImage">Add Title Image (optional)</label>
+            <input id="tImage" name="tImage"  type="file" (change)="handleImageInput($event.target.files)">
+        </div>
+        <div class="field">
+            <label for="eImages">Add Extra Images (optional)</label>
+            <input id="eImages" name="eImages"  type="file" multiple (change)="handleExtraImgInput($event.target.files)">
+        </div>
+        <button (click)="uploadFileToActivity()">Verzenden</button>
+        <button type='submit' class="ui positive right button">
+            Publish Post
+          </button>
+    </form>
+
+    <input id="photo" type="file" />
+    <!-- button to trigger the file upload when submitted -->
+    <button type="button" class="btn btn-success btn-s" (click)="upload()">
+        Upload with method 2
+    </button>
   </div>

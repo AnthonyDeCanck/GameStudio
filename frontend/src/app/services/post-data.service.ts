@@ -32,6 +32,7 @@ export class PostDataService {
   }
 
   getPost(id: string): Observable<Post> {
+    console.log("GetPost Called");
     return this.http
       .get(`${this._appUrl}/posts/${id}`)
       .pipe(map(Post.fromJSON));
@@ -43,6 +44,9 @@ export class PostDataService {
       .pipe(map(Post.fromJSON));
   }
 
-
-
+  uploadFiles(formData : FormData){
+    console.log ("in upload function data service");
+    return this.http
+        .post(`${this._appUrl}/upload`, formData);
+  }
 }
