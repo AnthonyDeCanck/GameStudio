@@ -10,13 +10,16 @@ let auth = jwt({secret: process.env.GAMESTUDIO_BACKEND_SECRET});
 //require multer for the file uploads
 var multer = require('multer');
 // set the directory for the uploads to the uploaded to
-var DIR = './uploads/';
+var DIRImage = './public/uploads/Images';
+var DIRGame = './public/uploads/Games';
 //define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
-  var upload = multer({dest: DIR}).single("photo");
+  var uploadImg = multer({dest: DIRImage}).single("image");
+  var uploadGame = multer({dest: DIRGame}).single("game");
+
 
 
 /*var storage = multer.diskStorage({
-  destination: './uploads/',
+  destination: './public/uploads/',
   filename: function (req, file, cb) {
     crypto.pseudoRandomBytes(16, function (err, raw) {
       if (err) return cb(err)
@@ -68,24 +71,41 @@ router.get('/API/upload/:image', function(req, res, next) {
   });
   
   //our file upload function.
-  router.post('/API/upload', function (req, res, next) {
+  router.post('/API/upload/Image', function (req, res, next) {
     console.log("in the post upload backend function");
        var path = '';
        console.log("path initialized");
-       upload(req, res, function (err) {
+       uploadImg(req, res, function (err) {
          console.log("in actual upload");
           if (err) {
             console.log("an error occurred");
             // An error occurred when uploading
-            console.log(err);
+            console.log("error is "+err);
             return res.status(422).send("an Error occured")
           }  
-         // No error occured.
-          path = req.file.path+".jpg";
-          console.log(path);
-          return res.send("Upload Completed for "+path); 
+         // No error occured.          
+          path = req.file.path;           
+          console.log(req.file.filename);
+          res.json({
+            name : req.file.filename
+          });
+            
     });
     console.log("upload never started");    
+  })
+
+
+  router.post('/API/upload/Game', function (req, res, next) {
+       var path = '';
+       uploadGame(req, res, function (err) {
+          if (err) {
+            return res.status(422).send("an Error occured")
+          }            
+          path = req.file.path;           
+          res.json({
+            name : req.file.filename
+          });   
+    });  
   })
 
 router.param('post', function(req, res, next, id) {

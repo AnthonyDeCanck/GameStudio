@@ -18,6 +18,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PostDataService } from '../services/post-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Post } from '../models/Post';
+import {MyFile} from '../models/MyFile';
 import { AuthenticationService } from '../services/authentication.service';
 
 //import { FileUploadService } from '../file-upload.service';
@@ -37,10 +38,15 @@ export class AddPostComponent implements OnInit {
 
   image : File = null;
   game : File = null;
-  extraImg : File[] = new Array;
+  extraImg : File[];
   private readonly _appUrl = '/API'
   private url1 = 'http://localhost:8000/api/upload'
 
+  myImage : MyFile;
+  myGame : MyFile;
+
+  imageUploadStatus : string;
+  gameUploadStatus : string;
 
   constructor(
     private fb: FormBuilder,
@@ -76,6 +82,9 @@ export class AddPostComponent implements OnInit {
     }
   
     getStringArrayFromExtraImg(files : File[]) :string[] {
+      if(files==null||files.length==0){
+        return null;
+      }
        let stringArray : string[];
        for(let i = 0 ; i<files.length; i++){
         stringArray[i] = files[i].name;
@@ -83,15 +92,38 @@ export class AddPostComponent implements OnInit {
       return stringArray;
     }
 
+    uploadImage() {
+      let formData = new FormData();
+    //check if the filecount is greater than zero, to be sure a file was selected.
+        if (this.image != null) { // a file was selected
+            //append the key name 'photo' with the first file in the element
+                formData.append('image', this.image);
+              this._postDataService.uploadImage(formData).subscribe(file =>{ this.myImage = file; console.log(this.myImage)});
+          }
+    }
+
+    uploadGame() {
+      let formData = new FormData();
+    //check if the filecount is greater than zero, to be sure a file was selected.
+        if (this.game != null) { // a file was selected
+            //append the key name 'photo' with the first file in the element
+                formData.append('game', this.game);
+              this._postDataService.uploadGame(formData).subscribe(file =>{ this.myGame = file});
+          }
+    }
+
     onSubmit() {
-      var post = new Post(this.post.value.title, new Date(), this.post.value, this.image.name, this.getStringArrayFromExtraImg(this.extraImg), this.game.name);
+      console.log(this.myImage);
+      console.log(this.myGame);
+      this.submitPost(this.myImage==null?null:this.myImage.name , this.myGame==null?null:this.myGame.name);
+    }
+
+    submitPost(imageName: string, gameName: string){
+      var post = new Post(this.post.value.title, new Date(), this.post.value.body, 
+                          imageName, this.getStringArrayFromExtraImg(this.extraImg), 
+                          gameName);
       post.author = this._authService.user$.getValue();
-      let filesArray : File[];
-      filesArray.push(this.game);
-      filesArray.push(this.image);
-      //NOG BELANGRIJK EXTRA ARRAY OPVULLEN MET EXTRA IMAGES !!!!!!!!!!!!!!!!
       
-      this.upload();
       this._postDataService.addNewPost(post).subscribe(
         () => {
           this.post.reset();
@@ -117,12 +149,20 @@ export class AddPostComponent implements OnInit {
         if (fileCount > 0) { // a file was selected
             //append the key name 'photo' with the first file in the element
                 formData.append('photo', inputEl.files.item(0));
-            this._postDataService.uploadFiles(formData).map((res:Response) => res.json()).subscribe(
-              //map the success function and alert the response
-               (success) => {
-                       alert("upload sucessfull");
-              },
-              (error) => alert(error));
+              this._postDataService.uploadFiles(formData).subscribe(file => {console.log(file);
+                                                                    this.myFile = file});
+              console.log("fuckerdefuck");
+              /*let promise = new Promise(function(resolve, reject) {
+                this._postDataService.uploadFiles(formData).subscribe(file => this.myFile = file);
+              });	
+
+              promise.then(() => console.log("upload complete!!"));*/
           }
-       }
+          
+      }
+
+      test(){
+        console.log(this.myFile);
+      }
+
 }

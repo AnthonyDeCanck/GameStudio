@@ -17,7 +17,7 @@ export class GameComponent implements OnInit {
 
 ngOnInit() {
   this.code = ""+ this.route.snapshot.paramMap.get('string');
-  let url = `../../assets/games/${this.code}`;
+  let url = `http://localhost:3000/uploads/Games/${this.code}`;
   this.url = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

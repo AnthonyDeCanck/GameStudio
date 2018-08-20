@@ -4,7 +4,7 @@
       <h4 class="ui dividing header">Add Post</h4>
       <div class="field">
           <label for="title">title</label>
-          <input id="name" name="title" formControlName='title'>
+          <input id="name" name="title" formControlName='title' >
           
         </div>
         <div class="field">
@@ -15,14 +15,23 @@
         <div class="field">
             <label for="gameFile">Add GameFile (optional / SWF only!)</label>
             <input id="gameFile" name="gameFile"  type="file" (change)="handleGameInput($event.target.files)">
+            <button type="button" class="ui positive right button" (click)="uploadGame()">
+                Upload Game
+            </button>
+            <p>{{this.gameUploadStatus}}</p>
         </div>
         <div class="field">
             <label for="tImage">Add Title Image (optional)</label>
             <input id="tImage" name="tImage"  type="file" (change)="handleImageInput($event.target.files)">
+            <button type="button" class="ui positive right button" (click)="uploadImage()">
+                Upload Image
+            </button>
+            <p>{{this.imageUploadStatus}}</p>
         </div>
         <div class="field">
             <label for="eImages">Add Extra Images (optional)</label>
             <input id="eImages" name="eImages"  type="file" multiple (change)="handleExtraImgInput($event.target.files)">
+            
         </div>
         <button (click)="uploadFileToActivity()">Verzenden</button>
         <button type='submit' class="ui positive right button">
@@ -34,5 +43,8 @@
     <!-- button to trigger the file upload when submitted -->
     <button type="button" class="btn btn-success btn-s" (click)="upload()">
         Upload with method 2
+    </button>
+    <button type="button" class="btn btn-success btn-s" (click)="test()">
+        Testbutton
     </button>
   </div>

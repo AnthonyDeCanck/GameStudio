@@ -12,6 +12,9 @@ var app = express();
 let cors = require('cors');
 app.use(cors({origin: "*"}));
 
+var publicDir = require('path').join(__dirname,'/public');
+app.use(express.static(publicDir));
+
 
 mongoose.connect(process.env.GAMESTUDIO_DB || 'mongodb://localhost/GameStudioDB');
 

@@ -23,7 +23,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LogoutComponent } from './logout/logout.component';
 import { AddPostComponent } from './add-post/add-post.component';
-import { HttpModule } from '../../node_modules/@angular/http';
+import { HttpModule } from '@angular/http';
 
 
 

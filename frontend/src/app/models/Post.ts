@@ -3,7 +3,7 @@ export class Post {
   private _title:string;
   private _author:string;
   private _postDate:Date;
-  private _titleImg:String;
+  private _titleImg:string;
   private _imgList:string[];
   private _body:string;
   private _gameURL:string;
@@ -60,7 +60,7 @@ export class Post {
       return this._postDate;
     }
 
-    get titleImg(): String {
+    get titleImg(): string {
       return this._titleImg;
     }
     
