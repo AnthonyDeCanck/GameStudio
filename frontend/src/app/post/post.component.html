@@ -35,23 +35,13 @@
         <!-- Post Content -->
         <p class="lead">{{post.body}}</p>
   
-        <hr>
-  
-        <div *ngIf="hasExtraImg">
-          <div class="container">
-            <div class="row">
-                <div class="col-md-4" *ngFor="let imag of _post.imgList">
-                        <img  class="img-fluid rounded" src="assets/img/{{imag}}" alt="">
-                </div>
-            </div>
-          </div>
+          <hr>
+          <button routerLink="/game/{{_post.gameURL}}" class="btn btn-danger">
+            Click to play
+          </button>
           <hr>
       </div>
-        <button routerLink="/game/{{_post.gameURL}}" class="btn btn-danger">
-          Click to play
-        </button>
-        <hr>
-      </div>
+        
   
       <!-- Sidebar Widgets Column --> 
         <div class="col-md-4">

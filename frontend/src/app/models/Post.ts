@@ -4,16 +4,16 @@ export class Post {
   private _author:string;
   private _postDate:Date;
   private _titleImg:string;
-  private _imgList:string[];
+  /*private _imgList:string[];*/
   private _body:string;
   private _gameURL:string;
   
-    constructor(title:string, postDate:Date, body:string, titleImg?:string, imgList?:string[],gameURL?:string) {
+    constructor(title:string, postDate:Date, body:string, titleImg?:string, /*imgList?:string[],*/gameURL?:string) {
       this._title = title;
       this._postDate = postDate;
       this._body = body;
       this._titleImg = titleImg;
-      this._imgList = imgList;
+      /*this._imgList = imgList;*/
       this._gameURL = gameURL;
     }
 
@@ -24,7 +24,7 @@ export class Post {
         json.postDate,
         json.body,
         json.titleImg,
-        json.imgList,
+        /*json.imgList,*/
         json.gameURL
       );
       rec._id = json._id;
@@ -40,7 +40,6 @@ export class Post {
         postDate: this._postDate,
         body: this._body,
         titleImg: this._titleImg,
-        imgList: this._imgList,
         gameURL: this._gameURL
       };
     }
@@ -64,9 +63,9 @@ export class Post {
       return this._titleImg;
     }
     
-    get imgList() : string[] {
+    /*get imgList() : string[] {
       return this._imgList;
-    }	
+    }	*/
 
     get body() : string {
       return this._body;

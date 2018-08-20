@@ -1,4 +1,7 @@
 <div class="card mb-4">
+  <div *ngIf="hasImg">        
+    <img  class="card-img-top" src="http://localhost:3000/uploads/Images/{{post.titleImg}}" alt="">
+</div>
   <div class="card-body">
     <h2 class="card-title">{{post.title}}</h2>
     <p class="card-text">{{post.body}}</p>

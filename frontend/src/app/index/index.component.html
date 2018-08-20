@@ -7,7 +7,7 @@
                     <img src="assets/img/GameStudio_Logo_Small.png" alt="header" class="centerDiv">
                 </p>
                 <p id="buttonP">
-                    <button class="btn btn-danger">Get Started Now!</button>
+                    <button class="btn btn-danger" routerLink="/addPost">Get Started Now!</button>
                 </p>
             </div>
         </div>
@@ -26,18 +26,8 @@
             <!-- Blog Post -->
           <div *ngFor="let localPost of _posts">
                 <app-list-post [post]='localPost' data-test="post"></app-list-post>
-                <p>Bla bla</p>
           </div>
       
-            <!-- Pagination -->
-            <ul class="pagination justify-content-center mb-4">
-              <li class="page-item">
-                <a class="page-link" href="#">&larr; Older</a>
-              </li>
-              <li class="page-item disabled">
-                <a class="page-link" href="#">Newer &rarr;</a>
-              </li>
-            </ul>
           </div>    <!-- Sidebar Widgets Column -->
           <div class="col-md-4">
           <app-sidebar></app-sidebar>

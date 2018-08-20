@@ -22,14 +22,25 @@
   
         <!-- Date/Time -->
         <p>Posted on {{post.postDate}}</p>
-
+  
+        <hr>
+  
+        <!-- Preview Image -->
+        <div *ngIf="hasImg">        
+            <img  class="card-img-top" src="http://localhost:3000/uploads/Images/{{post.titleImg}}" alt="">
+      </div>
+        
         <hr>
   
         <!-- Post Content -->
         <p class="lead">{{post.body}}</p>
   
-        <hr>
+          <hr>
       </div>
+        <button routerLink="/game/{{_post.gameURL}}" class="btn btn-danger">
+          Click to play
+        </button>
+        <hr>
   
       <!-- Sidebar Widgets Column --> 
         <div class="col-md-4">

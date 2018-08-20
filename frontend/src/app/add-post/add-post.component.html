@@ -1,3 +1,6 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
 <div class="ui segment">
     <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
     <form class="ui form" [formGroup]='post' (ngSubmit)='onSubmit()'>
@@ -28,23 +31,12 @@
             </button>
             <p>{{this.imageUploadStatus}}</p>
         </div>
-        <div class="field">
-            <label for="eImages">Add Extra Images (optional)</label>
-            <input id="eImages" name="eImages"  type="file" multiple (change)="handleExtraImgInput($event.target.files)">
-            
-        </div>
-        <button (click)="uploadFileToActivity()">Verzenden</button>
         <button type='submit' class="ui positive right button">
             Publish Post
           </button>
     </form>
 
-    <input id="photo" type="file" />
-    <!-- button to trigger the file upload when submitted -->
-    <button type="button" class="btn btn-success btn-s" (click)="upload()">
-        Upload with method 2
-    </button>
-    <button type="button" class="btn btn-success btn-s" (click)="test()">
-        Testbutton
-    </button>
   </div>
+</div>
+</div>
+</div>

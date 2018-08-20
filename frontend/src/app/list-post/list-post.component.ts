@@ -11,9 +11,16 @@ export class ListPostComponent implements OnInit {
 
   @Input() public post:Post;
 
+  public hasImg:boolean = false;
+
   constructor(private _postDataService:PostDataService) { }
 
   ngOnInit() {
+    this.hasImg = this.postHasImg();
+  }
+
+  postHasImg() {
+    return this.post.titleImg != undefined;
   }
 
 }

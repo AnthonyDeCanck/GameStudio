@@ -3,9 +3,8 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
   title: String,
   author: String,
-  //postDate: Date,
+  postDate: Date,
   titleImg: String,
-  imgList: [String],
   body: String,
   gameURL:String
 });	

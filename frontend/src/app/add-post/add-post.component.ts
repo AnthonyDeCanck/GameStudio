@@ -74,29 +74,11 @@ export class AddPostComponent implements OnInit {
       console.log(this.image);
     }
   
-    handleExtraImgInput(files: FileList) {
-      for(let i = 0 ; i<files.length; i++){
-        this.extraImg[i] = files.item(i);
-      }  
-      console.log(this.extraImg);
-    }
-  
-    getStringArrayFromExtraImg(files : File[]) :string[] {
-      if(files==null||files.length==0){
-        return null;
-      }
-       let stringArray : string[];
-       for(let i = 0 ; i<files.length; i++){
-        stringArray[i] = files[i].name;
-      } 
-      return stringArray;
-    }
+    
 
     uploadImage() {
       let formData = new FormData();
-    //check if the filecount is greater than zero, to be sure a file was selected.
         if (this.image != null) { // a file was selected
-            //append the key name 'photo' with the first file in the element
                 formData.append('image', this.image);
               this._postDataService.uploadImage(formData).subscribe(file =>{ this.myImage = file; console.log(this.myImage)});
           }
@@ -104,9 +86,7 @@ export class AddPostComponent implements OnInit {
 
     uploadGame() {
       let formData = new FormData();
-    //check if the filecount is greater than zero, to be sure a file was selected.
         if (this.game != null) { // a file was selected
-            //append the key name 'photo' with the first file in the element
                 formData.append('game', this.game);
               this._postDataService.uploadGame(formData).subscribe(file =>{ this.myGame = file});
           }
@@ -120,8 +100,7 @@ export class AddPostComponent implements OnInit {
 
     submitPost(imageName: string, gameName: string){
       var post = new Post(this.post.value.title, new Date(), this.post.value.body, 
-                          imageName, this.getStringArrayFromExtraImg(this.extraImg), 
-                          gameName);
+                          imageName, gameName);
       post.author = this._authService.user$.getValue();
       
       this._postDataService.addNewPost(post).subscribe(
@@ -135,34 +114,5 @@ export class AddPostComponent implements OnInit {
         }
       );
     }
-
-    //the function which handles the file upload without using a plugin.
-    upload() {
-    //locate the file element meant for the file upload.
-        let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
-    //get the total amount of files attached to the file input.
-        let fileCount: number = inputEl.files.length;
-        console.log(inputEl.files.item(0));
-    //create a new fromdata instance
-        let formData = new FormData();
-    //check if the filecount is greater than zero, to be sure a file was selected.
-        if (fileCount > 0) { // a file was selected
-            //append the key name 'photo' with the first file in the element
-                formData.append('photo', inputEl.files.item(0));
-              this._postDataService.uploadFiles(formData).subscribe(file => {console.log(file);
-                                                                    this.myFile = file});
-              console.log("fuckerdefuck");
-              /*let promise = new Promise(function(resolve, reject) {
-                this._postDataService.uploadFiles(formData).subscribe(file => this.myFile = file);
-              });	
-
-              promise.then(() => console.log("upload complete!!"));*/
-          }
-          
-      }
-
-      test(){
-        console.log(this.myFile);
-      }
 
 }
